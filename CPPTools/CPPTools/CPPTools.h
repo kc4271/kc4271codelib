@@ -5,7 +5,7 @@ inline unsigned __int64 GetCycleCount()
 	__asm RDTSC
 }
 
-bool MemReverse(char *pBegin,char *pEnd)
+bool MemReverse(unsigned char *pBegin,unsigned char *pEnd)
 {
 	if(!pBegin || !pEnd || pBegin > pEnd) return false;
 	while(pBegin < pEnd)
@@ -16,10 +16,10 @@ bool MemReverse(char *pBegin,char *pEnd)
 	return true;
 }
 
-bool MemReverse(char *pBegin,unsigned int size)
+bool MemReverse(unsigned char *pBegin,unsigned int size)
 {
 	if(!pBegin) return false;
-	char *pEnd = pBegin + size - 1;
+	unsigned char *pEnd = pBegin + size - 1;
 	while(pBegin < pEnd)
 	{
 		*pBegin ^= *pEnd ^= *pBegin ^= *pEnd;
