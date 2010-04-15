@@ -35,7 +35,7 @@ void revrs(Type &inValue)
 }
 
 template <class Type>
-void read_big_endien_value(std::istream &in,Type &v)
+void read_big_endien_value(std::istream &instream,Type &inValue)
 {
 	unsigned int len = sizeof(v);
 	for(int i = len - 1;i >= 0;i--)
