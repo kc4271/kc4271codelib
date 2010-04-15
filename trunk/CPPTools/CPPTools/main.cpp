@@ -8,7 +8,7 @@ int main()
 	char A[] = "1234";
 	char B[] = "12345\0";
 	unsigned char *e = NULL;
-	int c = -10;
+	int c = -10; 
 	memrevrs((unsigned char *)&c,4);
 	memrevrs((unsigned char *)&c,4);
 	memrevrs((unsigned char *)A,4);
