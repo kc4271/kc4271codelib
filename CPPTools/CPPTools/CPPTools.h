@@ -43,3 +43,11 @@ void read_big_endien_value(std::istream &instream,Type &inValue)
 		in.read(((char *)&v)+i,sizeof(char));
 	}
 }
+
+template <class Type>
+Type get_upbound(Type integer_value, Type segment)
+{
+    Type t = integer_value % segment;
+    return t == 0 ? integer_value : integer_value - t + segment;
+}
+
