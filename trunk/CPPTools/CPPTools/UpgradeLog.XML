@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CPPTools">
+</Property><Property Name="Solution File" Value="D:\Kc4271\Code Library\CPPTools\CPPTools\CPPTools.sln">
+</Property><Property Name="Date" Value="2010年4月16日">
+</Property><Property Name="Time" Value="12:12:35">
+</Property></Properties><Event ErrorLevel="0" Project="CPPTools" Source="CPPTools.vcproj" Description="Converting project file 'D:\Kc4271\Code Library\CPPTools\CPPTools\CPPTools.vcproj'.">
+</Event><Event ErrorLevel="1" Project="CPPTools" Source="CPPTools.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="CPPTools" Source="CPPTools.vcproj" Description="Done converting to new project file 'D:\Kc4271\Code Library\CPPTools\CPPTools\CPPTools.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="CPPTools" Source="CPPTools.vcproj" Description="Converted">
+</Event></UpgradeLog>
