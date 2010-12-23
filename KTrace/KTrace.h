@@ -42,16 +42,19 @@ namespace KTRACE
 		
 		void Run()
 		{
-			pid = _spawnl(P_NOWAIT,displayTool,displayTool,hstr,sstr,NULL);          
+			pid = _spawnl(P_NOWAIT,displayTool,displayTool,hstr,sstr,NULL);
 		}
 
 		void Trace(const char *fmt, ...)
 		{
-			va_list ap;
-			va_start(ap,fmt);
-			vsprintf(buf,fmt,ap);
-			_write(fdpipe[WRITE],buf,bufsize);
-			va_end(ap);
+			if(success && pid != -1)
+			{
+				va_list ap;
+				va_start(ap,fmt);
+				vsprintf(buf,fmt,ap);
+				_write(fdpipe[WRITE],buf,bufsize);
+				va_end(ap);
+			}
 		}
 
 		~KTrace()
