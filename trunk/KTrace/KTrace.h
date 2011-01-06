@@ -23,15 +23,17 @@ namespace KTRACE
 		char sstr[20];
 		char displayTool[512];
 		char *buf;
-		bool success;
+		bool successPipe;
+		bool successTraceTools;
 		
 	public:
 		KTrace(const char *_exe_path,const int _bufsize)
 		{
 			strcpy(displayTool,_exe_path);
 			bufsize = _bufsize;
-			success = (_pipe(fdpipe,bufsize,O_BINARY) != -1);
-			if(success)
+			successTraceTools = false;
+			successPipe = (_pipe(fdpipe,bufsize,O_BINARY) != -1);
+			if(successPipe)
 			{
 				itoa(fdpipe[READ],hstr,10);
 				itoa(bufsize,sstr,10);
@@ -42,12 +44,16 @@ namespace KTRACE
 		
 		void Run()
 		{
-			pid = _spawnl(P_NOWAIT,displayTool,displayTool,hstr,sstr,NULL);
+			if(successPipe)
+			{
+				pid = _spawnl(P_NOWAIT,displayTool,displayTool,hstr,sstr,NULL);
+				successTraceTools = (pid != -1);
+			}
 		}
 
 		void Trace(const char *fmt, ...)
 		{
-			if(success && pid != -1)
+			if(successPipe && successTraceTools)
 			{
 				va_list ap;
 				va_start(ap,fmt);
@@ -59,8 +65,12 @@ namespace KTRACE
 
 		~KTrace()
 		{
-			if(success)
+			if(successPipe)
 			{
+				if(successTraceTools)
+				{
+					Trace("__EOF__");
+				}
 				_close( fdpipe[READ] );
 				_close( fdpipe[WRITE] );
 				free(buf);
